@@ -1,0 +1,39 @@
+Query 1: Which genre generates the most invoice amounts?
+SELECT g.name AS genre, SUM(l.UnitPrice*l.Quantity) AS inv_amt
+FROM genre g
+JOIN track t
+ON t.genreid = g.genreid
+JOIN InvoiceLine l
+ON t.trackid = l.trackid
+GROUP BY 1
+ORDER BY 2 DESC;
+
+Query 2: What is the most popular mediatype by number of times invoiced?
+  SELECT m.Name, COUNT(*) AS times_invoiced
+  FROM MediaType m
+  JOIN track t
+  ON t.MediaTypeId = m.MediaTypeId
+  JOIN InvoiceLine l
+  ON l.TrackId = t.TrackId
+  GROUP BY 1
+  ORDER BY 2 DESC;
+
+Query 3: Which employees supported the most customers?
+SELECT e.EmployeeId, e.FirstName || ' ' || e.LastName AS Employee_name, COUNT(*) AS customers_assisted
+FROM employee e
+JOIN customer c
+ON c.SupportRepId = e.EmployeeId
+GROUP BY 1
+ORDER BY 3 DESC;
+
+Query 4: How are the invoice amounts distributed across the playlists?
+SELECT p.name playlist_name, SUM(l.unitprice*l.Quantity) total_invoice_amt
+FROM playlist p
+JOIN PlaylistTrack pt
+ON pt.PlaylistId = p.PlaylistId
+JOIN track t
+ON t.TrackId = pt.TrackId
+JOIN InvoiceLine l
+ON l.TrackId = t.TrackId
+GROUP BY 1
+ORDER BY 2 DESC;
