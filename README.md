@@ -27,3 +27,4 @@ In SQLite "" are used to denote strings and '' are used to denote columns(though
 ## Results
 The final project submission which features the presentation of the questions and their corresponding answers per the queries can be found [here](https://github.com/KOdoi-OJ/Query-a-Digital-Music-Store-Database/blob/main/SQL%20Project%20Submission%20-%20Parch%20and%20Posey%20database.pdf)
 
+*This project was completed, with final review and approval, on November 30, 2021*
